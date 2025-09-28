@@ -83,7 +83,12 @@ object Exercise2 {
     ).map(_.toPromotionCombo)
   }
 
-  def combinablePromotions(promotionCode: String, allPromotions: Seq[Promotion]): Seq[PromotionCombo] = allCombinablePromotions(allPromotions)
-    .filter(_.promotionCodes.contains(promotionCode))
-    .sortBy(_.promotionCodes.size)
+  def combinablePromotions(promotionCode: String, allPromotions: Seq[Promotion]): Seq[PromotionCombo] = {
+    if(allPromotions.exists(_.code.equalsIgnoreCase(promotionCode)))
+      allCombinablePromotions(allPromotions)
+        .filter(_.promotionCodes.contains(promotionCode))
+        .sortBy(_.promotionCodes.size)
+    else
+      Seq.empty[PromotionCombo]
+  }
 }
