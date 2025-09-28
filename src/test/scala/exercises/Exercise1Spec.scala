@@ -44,19 +44,19 @@ class Exercise1Spec extends AnyFlatSpec with Matchers {
     currentResult should contain theSameElementsAs expectedResult
   }
 
-  "getBestGroupPrices" should "return empty List when there is no matches between rates and cabin prices" in {
+  "getBestGroupPrices" should "return empty Seq when there is no matches between rates and cabin prices" in {
     val currentResult = getBestGroupPrices(ratesWithNotMatchData, cabinPrices)
 
     currentResult.size should be(0)
   }
 
-  "getBestGroupPrices" should "return empty List when there is no rates" in {
+  "getBestGroupPrices" should "return empty Seq when there is no rates" in {
     val currentResult = getBestGroupPrices(Seq(), cabinPrices)
 
     currentResult.size should be(0)
   }
 
-  "getBestGroupPrices" should "return empty List when there is no cabinPrices" in {
+  "getBestGroupPrices" should "return empty Seq when there is no cabinPrices" in {
     val currentResult = getBestGroupPrices(rates, Seq())
 
     currentResult.size should be(0)
